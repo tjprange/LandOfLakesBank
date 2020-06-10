@@ -2,7 +2,7 @@
 
 ## Initial Setup
 
-1. `git clone https://github.com/GavinSlusher/Land_of_Lakes_340_Compliant.git`
+1. `git clone https://github.com/tjprange/LandOfLakesBank.git`
 2. Make sure you're in the right directory. If in flip, run `bash`. 
 3. `virtualenv LoL -p $(which python3)`
 4. `source ./LoL/bin/activate` to run the virtual environment
