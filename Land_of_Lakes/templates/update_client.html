@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>Update Client</h1>
+
+  <p>You can nullify the many to one relationship between clients and addresses
+  here. No matter what you choose, this form will also update all fields for
+  the client passed in with their ID. Don't know their ID? Look it up
+  <a href="{{ url_for('main.search_database') }}">here!</a> </p>
+
+  <div class='form-group'>
+    <form method="POST">
+      {{ make_null_form.hidden_tag() }}
+      {{ make_null_form.make_null.label }} {{make_null_form.make_null(class="btn btn-outline-info dropdown-toggle")}}
+      {{ make_null_form.submit(class="btn btn-primary") }}
+    </form>
+  </div>
+
+  {% if make_null == 'False' %}
+    <div class='form-group'>
+      <form method="POST" action="">
+        {{ update_client_address_form.hidden_tag() }}
+        <div class="form-row">
+          <div class="col-auto">
+            {{ update_client_address_form.id.label }} {{update_client_address_form.id(class="form-control", placeholder="ID")}}
+          </div>
+          <div class="col-auto">
+            {{ update_client_address_form.ssn.label }} {{update_client_address_form.ssn(class="form-control", placeholder="Social Security Number")}}
+          </div>
+          <div class="col-auto">
+            {{ update_client_address_form.email.label }} {{update_client_address_form.email(class="form-control", placeholder="Email")}}
+          </div>
+        </div>
+        <br></br>
+        <div class="form-row">
+          <div class="col-auto">
+            {{ update_client_address_form.first_name.label }} {{update_client_address_form.first_name(class="form-control", placeholder="First Name")}}
+          </div>
+          <div class="col-auto">
+            {{ update_client_address_form.last_name.label }} {{update_client_address_form.last_name(class="form-control", placeholder="Last Name")}}
+          </div>
+        </div>
+        <br></br>
+        <div class="form-row">
+          <div class="col-auto">
+            {{ update_client_address_form.house_number.label }} {{update_client_address_form.house_number(class="form-control", placeholder="House Number")}}
+          </div>
+          <div class="col-auto">
+            {{ update_client_address_form.city.label }} {{update_client_address_form.city(class="form-control", placeholder="City")}}
+          </div>
+          <div class="col-auto">
+            {{ update_client_address_form.state.label }} {{update_client_address_form.state(class="form-control", placeholder="State")}}
+          </div>
+          <div class="col-auto">
+            {{ update_client_address_form.zip_code.label }} {{update_client_address_form.zip_code(class="form-control", placeholder="Zip Code")}}
+          </div>
+        </div>
+        <br></br>
+        {{ update_client_address_form.submit(class="btn btn-primary") }}
+      </form>
+
+  {%  elif make_null == 'True' %}
+    <div class='form-group'>
+      <form method="POST" action="">
+        {{ update_client_only_form.hidden_tag() }}
+        <div class="form-row">
+          <div class="col-auto">
+            {{ update_client_only_form.id.label }} {{update_client_only_form.id(class="form-control", placeholder="ID")}}
+          </div>
+          <div class="col-auto">
+            {{ update_client_only_form.ssn.label }} {{update_client_only_form.ssn(class="form-control", placeholder="Social Security Number")}}
+          </div>
+          <div class="col-auto">
+            {{ update_client_only_form.email.label }} {{update_client_only_form.email(class="form-control", placeholder="Email")}}
+          </div>
+        </div>
+        <br></br>
+        <div class="form-row">
+          <div class="col-auto">
+            {{ update_client_only_form.first_name.label }} {{update_client_only_form.first_name(class="form-control", placeholder="First Name")}}
+          </div>
+          <div class="col-auto">
+            {{ update_client_only_form.last_name.label }} {{update_client_only_form.last_name(class="form-control", placeholder="Last Name")}}
+          </div>
+        </div>
+        {{ update_client_only_form.submit(class="btn btn-primary") }}
+      </form>
+  {% endif %}
+  </div>
+</div>
+
+{% if msg %}
+<p>{% print(msg) %}</p>
+{% endif %}
+
+{% endblock %}

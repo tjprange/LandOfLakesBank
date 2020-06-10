@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>Connect Advisor</h1>
+
+  <p>This form will connect an advisor with a client using their respective IDs.
+     Don't know the client ID? Look it up <a href="{{ url_for('main.search_database') }}">here!</a>
+     You can also view all the Advisors and their IDs by 
+     <a href="{{ url_for('main.view_tables') }}">viewing their table.</a>
+  </p>
+
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-row">
+      <div class="col-auto">
+        {{ form.client_id.label }} {{form.client_id}} 
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col">
+        {{ form.advisor_id.label }} {{form.advisor_id}} 
+      </div>
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+  </form>
+
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>Add an account for a Client</h1>
+  <p>This form will add an account for the requested client(s) using their ID's. Don't know the client's ID? Look it up <a href="{{ url_for('main.search_database') }}">here!</a></p>
+  <div class='form-group'>
+    <form method="POST">
+      {{ how_many_form.hidden_tag() }}
+      {{ how_many_form.number_wanted.label }} {{how_many_form.number_wanted(class="btn btn-outline-info dropdown-toggle")}}
+      {{ how_many_form.submit(class="btn btn-primary") }} 
+    </form>
+  </div>
+
+  {% if num_wanted == "1" %}
+  <div class='form-group'>
+    <form method="POST">
+      {{ one_form.hidden_tag() }}
+      <div class="form-row">
+        <div class="col-auto">
+          {{ one_form.id.label }} {{one_form.id(class="form-control")}}
+        </div>
+      </div>
+      <br></br>
+        {{ one_form.submit(class="btn btn-primary") }} 
+    </form>
+  </div>
+  {% elif num_wanted == "2" %}
+  <div class='form-group'>
+    <form method="POST">
+      {{ two_form.hidden_tag() }}
+      <div class="form-row">
+        <div class="col-auto">
+          {{ two_form.id_one.label }} {{two_form.id_one}}
+        </div>
+        <div class="col-auto">
+          {{ two_form.id_two.label }} {{two_form.id_two}}
+        </div>
+      </div>
+      <br></br>
+      {{ two_form.submit(class="btn btn-primary") }} 
+    </form>
+  </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>Add Financial Advisor</h1>
+
+  <p>This form will an advisor to the database. By default, advisors do not
+  have a book of clients</p>
+
+  <div class='form-group'>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class='form-row'>
+        <div class="col-auto">
+          {{ form.first_name.label }} {{form.first_name}}
+        </div>
+        <div class="col-auto">
+          {{ form.last_name.label }} {{form.last_name}}
+        </div>
+      </div>
+      <div class='form-row'>
+        <div class="col-auto">
+          {{ form.expertise.label }} {{form.expertise(class="btn btn-outline-info dropdown-toggle")}}
+        </div>
+      </div>
+      {{ form.submit(class="btn btn-primary") }} 
+    </form>
+  </div>
+  {%if submitted %}
+  <h3>Advisor Submitted!</h3>
+  {% endif %}
+</div>
+{% endblock %}

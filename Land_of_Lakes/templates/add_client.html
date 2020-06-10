@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>Add Client</h1>
+
+  <p>This Form will add a Client and their Address to the database. A client
+  <em>must</em> have an address to start out with, but if you want to nullify
+  the many to one relationship, you can do so when updating the client </p>
+
+  <div class='form-group'>
+    <form method="POST" action="{{ url_for('add.add_client') }}">
+      {{ form.hidden_tag() }}
+      <div class="form-row">
+        <div class="col-auto">
+          {{ form.ssn.label }} {{form.ssn(class="form-control", placeholder="Social Security Number")}} 
+        </div>
+        <div class="col-auto">
+          {{ form.email.label }} {{form.email(class="form-control", placeholder="Email")}}
+        </div>
+      </div>
+      <br></br>
+      <div class="form-row">
+        <div class="col-auto">
+          {{ form.first_name.label }} {{form.first_name(class="form-control", placeholder="First Name")}} 
+        </div>
+        <div class="col-auto">
+          {{ form.last_name.label }} {{form.last_name(class="form-control", placeholder="Last Name")}} 
+        </div>
+      </div>
+      <br></br>
+      <div class="form-row">
+        <div class="col-auto">
+          {{ form.house_number.label }} {{form.house_number(class="form-control", placeholder="House Number")}}
+        </div>
+        <div class="col-auto">
+          {{ form.city.label }} {{form.city(class="form-control", placeholder="City")}}
+        </div>
+        <div class="col-auto">
+          {{ form.state.label }} {{form.state(class="form-control", placeholder="State")}}
+        </div>
+        <div class="col-auto">
+          {{ form.zip_code.label }} {{form.zip_code(class="form-control", placeholder="Zip Code")}}
+        </div>
+      </div>
+      <br></br>
+      {{ form.submit(class="btn btn-primary") }} 
+    </form>
+  </div>
+  {% if submitted %}
+    <h3>Client submitted!</h3>
+  {%endif%}
+        
+
+</div>
+{% endblock %}

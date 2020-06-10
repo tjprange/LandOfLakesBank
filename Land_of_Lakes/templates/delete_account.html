@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>Delete Account</h1>
+
+  <div>
+        <p>
+                Enter an account number to delete an account. 
+                This will not delete any associated Clients.
+                You can look up its ID by 
+                <a href="{{ url_for('main.view_tables') }}">viewing their table.</a>
+        </p>
+  </div>
+
+  <div class='form-group'>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.id.label }} {{form.id}}
+      {{ form.submit(class="btn btn-primary") }} 
+    </form>
+  </div>
+  {%if account_exists == True %}
+     <h3>Account Deleted! </h3>
+  {%elif account_exists == False %}
+    <h3>Account Doesn't exist! Try again. </h3>  
+  {%elif account_exists == None %}
+  {% endif %}  
+</div>
+{% endblock %}

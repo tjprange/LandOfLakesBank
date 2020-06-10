@@ -1,0 +1,29 @@
+{% extends "view_tables.html" %}
+{% block content %}
+<h1>Client Table:</h1>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>SSN</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+    </tr>
+    {% for client in client_table %}
+    <tr>
+        <td>{{client.client_id}}</td>
+        <td>{{client.ssn}}</th>
+        <td>{{client.first_name}}</th>
+        <td>{{client.last_name}}</td>
+        <td>{{client.email}}</th>
+        <td>{{client.address_id.city}}</td>
+        <td>{{client.address_id.state}}</td>
+        <td>{{client.address_id.zip_code}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
